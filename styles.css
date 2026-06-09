@@ -954,3 +954,93 @@ section{
 
     color:#bbb;
 }
+
+/* ========================= */
+/* RESPONSIVE MÓVIL */
+/* ========================= */
+
+@media (max-width:768px){
+
+    section{
+        padding:80px 25px;
+    }
+
+    header{
+
+        padding:15px 20px;
+
+        flex-direction:column;
+
+        gap:15px;
+    }
+
+    .logo img{
+        height:60px;
+    }
+
+    nav{
+
+        gap:20px;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+    }
+
+    .hero{
+
+        min-height:90vh;
+    }
+
+    .hero h1{
+
+        font-size:3.2rem;
+
+        line-height:1.05;
+    }
+
+    .hero-content{
+
+        max-width:100%;
+    }
+
+    .quienes-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
+    }
+
+    .enfoque-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .projects-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:30px;
+    }
+
+    .testimonios-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .project-modal-content{
+
+        grid-template-columns:1fr;
+
+        width:95%;
+    }
+
+}
