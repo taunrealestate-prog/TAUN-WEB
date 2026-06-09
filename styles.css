@@ -274,6 +274,90 @@ button{
 }
 
 /* ========================= */
+/* TARJETAS 3D */
+
+
+.card{
+
+    perspective:1000px;
+
+    min-height:260px;
+}
+
+.card-inner{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+
+    transition:transform .7s;
+
+    transform-style:preserve-3d;
+}
+
+.card:hover .card-inner{
+
+    transform:rotateY(180deg);
+}
+
+.card-front,
+.card-back{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    backface-visibility:hidden;
+
+    border-radius:12px;
+
+    padding:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+.card-front{
+
+    background:#151515;
+}
+
+.card-back{
+
+    background:#151515;
+
+    transform:rotateY(180deg);
+}
+
+.card-back ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin-top:15px;
+}
+
+.card-back li{
+
+    margin-bottom:10px;
+
+    color:#ddd;
+}
+
+
+/* ========================= */
 /* CONTACTOS */
 /* ========================= */
 
@@ -400,19 +484,26 @@ section{
     grid-template-columns:repeat(3,1fr);
 
     gap:40px;
+
+    max-width:1400px;
+
+    margin:0 auto;
 }
 
 .enfoque-item{
 
     background:white;
 
-    padding:40px;
+    padding:50px 40px;
 
     border-radius:12px;
 
     color:#222;
 
     transition:.3s;
+
+    min-height:320px;
+
 }
 
 .enfoque-item:hover{
@@ -616,7 +707,12 @@ section{
 
 .stats{
 
-    background:#111;
+    background:
+    linear-gradient(
+        135deg,
+        #111,
+        #1a1a1a
+    );
 
     display:grid;
 
@@ -624,18 +720,18 @@ section{
 
     gap:40px;
 
-    text-align:center;
-
-    padding:120px 8%;
+    padding:100px 8%;
 }
 
 .stat h2{
 
     color:var(--gold);
 
-    font-size:4rem;
+    font-size:4.5rem;
 
-    margin-bottom:10px;
+    line-height:1;
+
+    margin-bottom:15px;
 }
 
 .stat p{
@@ -643,6 +739,40 @@ section{
     color:#ddd;
 
     letter-spacing:1px;
+}
+
+.stat{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(201,168,106,.15);
+
+    border-radius:20px;
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    transition:.3s ease;
+}
+
+.stat:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--gold);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.25);
+}
+
+.stat i{
+
+    color:var(--gold);
+
+    font-size:2rem;
+
+    margin-bottom:20px;
 }
 
 /* ========================= */
@@ -969,22 +1099,49 @@ section{
 
         padding:15px 20px;
 
-        flex-direction:column;
+        flex-direction:row;
 
         gap:15px;
+
+        width:100%;
+
+        justify-content:space-between;
     }
 
     .logo img{
         height:60px;
     }
 
+    .hamburger{
+        display:block !important;
+    }
+
     nav{
+
+        display:none;
+
+        position:absolute;
+
+        top:100%;
+
+        left:0;
+
+        width:100%;
+
+        background:#111;
+
+        flex-direction:column;
+
+        padding:20px;
 
         gap:20px;
 
-        flex-wrap:wrap;
+        text-align:center;
+    }
 
-        justify-content:center;
+    nav.active{
+
+        display:flex;
     }
 
     .hero{
@@ -1005,35 +1162,27 @@ section{
     }
 
     .quienes-grid{
-
-        grid-template-columns:1fr;
+        grid-template-columns:1fr !important;
     }
 
-    .cards{
-
-        grid-template-columns:1fr;
+   .cards{
+        grid-template-columns:1fr !important;
     }
 
     .enfoque-grid{
-
-        grid-template-columns:1fr;
+        grid-template-columns:1fr !important;
     }
 
     .projects-grid{
-
-        grid-template-columns:1fr;
+        grid-template-columns:1fr !important;
     }
 
     .stats{
-
-        grid-template-columns:repeat(2,1fr);
-
-        gap:30px;
+        grid-template-columns:1fr 1fr !important;
     }
 
     .testimonios-grid{
-
-        grid-template-columns:1fr;
+        grid-template-columns:1fr !important;
     }
 
     .project-modal-content{
@@ -1043,4 +1192,301 @@ section{
         width:95%;
     }
 
+}
+
+/* ========================= */
+/* MÓVIL FINO */
+/* ========================= */
+
+@media (max-width:768px){
+
+    /* HERO */
+
+    .hero-content{
+        margin-left:0;
+        padding-top:80px;
+    }
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    /* QUIÉNES SOMOS */
+
+    .quienes-texto h2{
+        font-size:2.3rem;
+    }
+
+    /* SERVICIOS */
+
+    .cards{
+        gap:20px;
+    }
+
+    .card{
+        min-height:auto;
+        padding:30px;
+    }
+
+    .card.active .card-inner{
+
+        transform:rotateY(180deg);
+    }
+
+    .card{
+
+        min-height:380px;
+    }
+
+    .card-inner{
+
+        height:380px;
+    }
+
+    .card-front,
+    .card-back{
+
+        height:380px;
+    }
+
+    /* ENFOQUE */
+
+    .enfoque h2{
+        font-size:2.3rem;
+    }
+
+    /* PROYECTOS */
+
+    .section-header h2{
+        font-size:2.4rem;
+    }
+
+    .proyecto-card img{
+        height:220px;
+    }
+
+    /* ESTADÍSTICAS */
+
+    .stats{
+        gap:25px;
+    }
+
+    .stat h2{
+        font-size:2.5rem;
+    }
+
+    /* TESTIMONIOS */
+
+    .testimonio{
+        padding:25px;
+    }
+
+    /* CTA */
+
+    .cta h2{
+        font-size:2.4rem;
+    }
+
+    /* MODAL PROYECTOS */
+
+    .project-modal-content{
+
+        width:95%;
+
+        max-height:90vh;
+
+        overflow-y:auto;
+
+        grid-template-columns:1fr;
+    }
+
+    .project-modal-content img{
+
+        height:300px;
+    }
+
+    .project-details{
+
+        padding:30px;
+    }
+
+    .project-details h2{
+
+        font-size:2rem;
+    }
+
+    .project-meta{
+
+        flex-direction:column;
+
+        gap:10px;
+    }
+
+    .project-meta{
+
+        flex-direction:column;
+
+        gap:10px;
+    }
+
+
+
+    /* NUESTRO ENFOQUE */
+
+
+    .enfoque-item .details{
+
+        display:none;
+
+        max-height:0;
+
+        overflow:hidden;
+
+        opacity:0;
+
+        transition:.3s;
+    }
+
+    .enfoque-item.active .details{
+
+        display:block;
+
+        max-height:500px;
+
+        opacity:1;
+    }
+
+    .enfoque-item:hover .details{
+
+        opacity:0;
+
+        max-height:0;
+    }
+
+    .enfoque-item.active .details{
+
+        opacity:1;
+
+        max-height:500px;
+
+        margin-top:20px;
+    }
+
+
+
+}
+
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media (min-width:769px) and (max-width:1100px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .projects-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .enfoque-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .quienes-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* ========================= */
+/* MENÚ HAMBURGUESA */
+/* ========================= */
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+header.scrolled{
+
+    background:#111;
+
+    box-shadow:0 5px 25px rgba(0,0,0,.3);
+}
+
+.hamburger{
+
+    display:none;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:1.8rem;
+
+    cursor:pointer;
+
+    padding:0;
+}
+
+/* ========================= */
+/* NUESTRO ENFOQUE PREMIUM */
+/* ========================= */
+
+.enfoque-item .details{
+
+    margin-top:20px;
+
+    border-top:1px solid rgba(201,168,106,.2);
+
+    padding-top:20px;
+}
+
+.enfoque-item .details ul{
+
+    list-style:none;
+}
+
+.enfoque-item .details li{
+
+    margin-bottom:12px;
+
+    color:#555;
+}
+
+.enfoque-item{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.enfoque-item .details{
+
+    opacity:0;
+
+    max-height:0;
+
+    transition:.4s ease;
+}
+
+.enfoque-item:hover .details{
+
+    opacity:1;
+
+    max-height:250px;
+
+    margin-top:20px;
 }

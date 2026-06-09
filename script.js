@@ -102,3 +102,76 @@ document
     contactModal.classList.add("active");
 
 });
+
+window.addEventListener("scroll", () => {
+
+    const header = document.querySelector("header");
+
+    if(window.scrollY > 50){
+
+        header.classList.add("scrolled");
+
+    }else{
+
+        header.classList.remove("scrolled");
+    }
+
+});
+
+const hamburger =
+document.getElementById("menu-toggle");
+
+const nav =
+document.querySelector("nav");
+
+hamburger.addEventListener("click", () => {
+
+    nav.classList.toggle("active");
+
+    if(nav.classList.contains("active")){
+
+        hamburger.innerHTML =
+        '<i class="fa-solid fa-xmark"></i>';
+
+    }else{
+
+        hamburger.innerHTML =
+        '<i class="fa-solid fa-bars"></i>';
+
+    }
+
+});
+
+
+document
+.querySelectorAll(".flip-card")
+.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        if(window.innerWidth <= 768){
+
+            card.classList.toggle("flipped");
+
+        }
+
+    });
+
+});
+
+document.querySelectorAll(".collapsible h3").forEach((header) => {
+    header.addEventListener("click", () => {
+        const card = header.parentElement;
+        card.classList.toggle("active");
+    });
+});
+
+document.querySelectorAll(".card").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        card.classList.toggle("active");
+
+    });
+
+});
