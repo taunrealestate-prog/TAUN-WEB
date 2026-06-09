@@ -707,12 +707,7 @@ section{
 
 .stats{
 
-    background:
-    linear-gradient(
-        135deg,
-        #111,
-        #1a1a1a
-    );
+    background:#f7f7f7;
 
     display:grid;
 
@@ -720,18 +715,16 @@ section{
 
     gap:40px;
 
-    padding:100px 8%;
+    padding:120px 8%;
 }
 
 .stat h2{
 
     color:var(--gold);
 
-    font-size:4.5rem;
+    font-size:4rem;
 
-    line-height:1;
-
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 .stat p{
@@ -743,13 +736,13 @@ section{
 
 .stat{
 
-    background:rgba(255,255,255,.03);
+    background:#151515;
 
     border:1px solid rgba(201,168,106,.15);
 
     border-radius:20px;
 
-    padding:40px 20px;
+    padding:50px 25px;
 
     text-align:center;
 
@@ -763,7 +756,7 @@ section{
     border-color:var(--gold);
 
     box-shadow:
-    0 20px 50px rgba(0,0,0,.25);
+    0 20px 40px rgba(0,0,0,.15);
 }
 
 .stat i{
@@ -1489,4 +1482,22 @@ header.scrolled{
     max-height:250px;
 
     margin-top:20px;
+}
+
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+.footer-content{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:25px;
+
+    font-size:.95rem;
 }
