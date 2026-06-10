@@ -1196,6 +1196,31 @@ section{
         right:20px;
     }
 
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+        gap:40px;
+    }
+
+
+
+
+
+    .contact-form{
+
+        width:100%;
+    }
+
+    .contact-info h2{
+
+        font-size:2.5rem;
+
+        line-height:1.1;
+    }
+
 }
 
 /* ========================= */
@@ -1677,4 +1702,85 @@ header.scrolled{
     opacity:1;
 
     transform:translateY(0);
+}
+
+/* ========================= */
+/* FOOTER PREMIUM */
+/* ========================= */
+
+footer{
+
+    background:#050505;
+
+    padding:80px 8% 30px;
+
+    color:white;
+}
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    gap:60px;
+
+    margin-bottom:50px;
+}
+
+.footer-logo{
+
+    height:110px;
+
+    margin-bottom:20px;
+}
+
+.footer-grid h4{
+
+    color:var(--gold);
+
+    margin-bottom:20px;
+}
+
+.footer-grid p{
+
+    color:#bbb;
+
+    margin-bottom:10px;
+
+    line-height:1.7;
+}
+
+.footer-bottom{
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding-top:35px;
+    margin-top:20px;
+
+    text-align:center;
+
+    color:#777;
+}
+
+/* ========================= */
+/* CONTACTO FORMULARIO */
+/* ========================= */
+
+.contact-form{
+
+    max-width:700px;
+
+    margin:60px auto 0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+}
+
+.contact-form-section .section-header{
+
+    text-align:center;
 }
