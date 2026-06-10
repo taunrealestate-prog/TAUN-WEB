@@ -176,87 +176,7 @@ document.querySelectorAll(".card").forEach(card => {
 
 });
 
-const counters = [
 
-    {
-        id: "projects-count",
-        target: 15,
-        suffix: "+"
-    },
-
-    {
-        id: "value-count",
-        target: 2,
-        suffix: "M€+"
-    },
-
-    {
-        id: "clients-count",
-        target: 100,
-        suffix: "%"
-    },
-
-    {
-        id: "years-count",
-        target: 10,
-        suffix: ""
-    }
-
-];
-
-let statsAnimated = false;
-
-function animateCounters(){
-
-    if(statsAnimated) return;
-
-    statsAnimated = true;
-
-    counters.forEach(counter => {
-
-        const element = document.getElementById(counter.id);
-
-        let current = 0;
-
-        const duration = 2500;
-
-        const increment =
-            counter.target / (duration / 16);
-
-        const timer = setInterval(() => {
-
-            current += increment;
-
-            if(current >= counter.target){
-
-                current = counter.target;
-
-                clearInterval(timer);
-            }
-
-            element.textContent =
-                Math.floor(current) +
-                counter.suffix;
-
-        },16);
-
-    });
-
-}
-
-const statsSection = document.querySelector(".stats");
-
-const observer = new IntersectionObserver(entries => {
-
-    if(entries[0].isIntersecting){
-
-        animateCounters();
-
-    }
-
-});
-
-observer.observe(statsSection);
 
 const fadeElements = document.querySelectorAll(".fade-up");
 
@@ -318,3 +238,90 @@ fadeCards.forEach(card => {
     cardObserver.observe(card);
 
 });
+
+const counters = [
+
+    {
+        id: "integral-count",
+        target: 360,
+        suffix: "º"
+    },
+
+    {
+        id: "areas-count",
+        target: 4,
+        suffix: ""
+    },
+
+    {
+        id: "attention-count",
+        target: 100,
+        suffix: "%"
+    },
+
+    {
+        id: "availability-count",
+        target: 24,
+        suffix: "/7"
+    }
+
+];
+
+let statsAnimated = false;
+
+function animateCounters() {
+
+    if (statsAnimated) return;
+
+    statsAnimated = true;
+
+    const duration = 2500;
+    const fps = 60;
+    const totalFrames = duration / (1000 / fps);
+
+    counters.forEach(counter => {
+
+        const element = document.getElementById(counter.id);
+
+        let frame = 0;
+
+        const interval = setInterval(() => {
+
+            frame++;
+
+            const progress = frame / totalFrames;
+
+            const current = Math.round(
+                counter.target * progress
+            );
+
+            element.textContent =
+                current + counter.suffix;
+
+            if (frame >= totalFrames) {
+
+                element.textContent =
+                    counter.target + counter.suffix;
+
+                clearInterval(interval);
+            }
+
+        }, 1000 / fps);
+
+    });
+
+}
+
+const statsSection = document.querySelector(".stats");
+
+const observer = new IntersectionObserver(entries => {
+
+    if (entries[0].isIntersecting) {
+
+        animateCounters();
+
+    }
+
+});
+
+observer.observe(statsSection);

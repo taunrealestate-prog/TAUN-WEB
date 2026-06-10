@@ -199,6 +199,12 @@ button{
     margin-bottom:20px;
 }
 
+.quienes-texto p,
+.contact-description,
+.project-description{
+    text-align: justify;
+}
+
 /* ========================= */
 /* SERVICIOS */
 /* ========================= */
