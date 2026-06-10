@@ -1185,6 +1185,17 @@ section{
         width:95%;
     }
 
+    .whatsapp-float{
+
+        width:60px;
+
+        height:60px;
+
+        bottom:20px;
+
+        right:20px;
+    }
+
 }
 
 /* ========================= */
@@ -1500,4 +1511,170 @@ header.scrolled{
     gap:25px;
 
     font-size:.95rem;
+}
+
+
+/* ========================= */
+/* FORMULARIO DE CONTACTO */
+/* ========================= */
+
+.contact-form-section{
+
+    background:#f7f7f7;
+
+    color:#222;
+
+    padding:120px 8%;
+}
+
+.contact-form{
+
+    max-width:800px;
+
+    margin:60px auto 0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+
+    padding:18px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:1rem;
+
+    font-family:inherit;
+}
+
+.contact-form textarea{
+
+    resize:vertical;
+}
+
+.contact-form button{
+
+    align-self:flex-start;
+}
+
+.contact-form .btn-gold{
+
+    background:var(--gold);
+
+    color:#111;
+
+    border:none;
+}
+
+.contact-form .btn-gold:hover{
+
+    background:#b8934d;
+
+    color:#111;
+}
+
+/* ========================= */
+/* WHATSAPP FLOTANTE */
+/* ========================= */
+
+.whatsapp-float{
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    background:#25D366;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    z-index:9999;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+
+    transition:.3s ease;
+}
+
+.whatsapp-float:hover{
+
+    transform:scale(1.1);
+}
+
+.whatsapp-float i{
+
+    color:white;
+
+    font-size:2rem;
+}
+
+
+/* ========================= */
+/* SCROLL ANIMATIONS */
+/* ========================= */
+
+.fade-up{
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    transition:
+
+        opacity 1.2s ease,
+
+        transform 1.2s ease;
+}
+
+.fade-up.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* ========================= */
+/* TARJETAS ANIMATIONS */
+/* ========================= */
+
+.fade-card{
+
+    opacity:0;
+
+    transform:translateY(70px);
+
+    transition:
+
+        opacity 1s ease,
+
+        transform 1s ease;
+}
+
+.fade-card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
 }

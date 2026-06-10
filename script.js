@@ -175,3 +175,146 @@ document.querySelectorAll(".card").forEach(card => {
     });
 
 });
+
+const counters = [
+
+    {
+        id: "projects-count",
+        target: 15,
+        suffix: "+"
+    },
+
+    {
+        id: "value-count",
+        target: 2,
+        suffix: "M€+"
+    },
+
+    {
+        id: "clients-count",
+        target: 100,
+        suffix: "%"
+    },
+
+    {
+        id: "years-count",
+        target: 10,
+        suffix: ""
+    }
+
+];
+
+let statsAnimated = false;
+
+function animateCounters(){
+
+    if(statsAnimated) return;
+
+    statsAnimated = true;
+
+    counters.forEach(counter => {
+
+        const element = document.getElementById(counter.id);
+
+        let current = 0;
+
+        const duration = 2500;
+
+        const increment =
+            counter.target / (duration / 16);
+
+        const timer = setInterval(() => {
+
+            current += increment;
+
+            if(current >= counter.target){
+
+                current = counter.target;
+
+                clearInterval(timer);
+            }
+
+            element.textContent =
+                Math.floor(current) +
+                counter.suffix;
+
+        },16);
+
+    });
+
+}
+
+const statsSection = document.querySelector(".stats");
+
+const observer = new IntersectionObserver(entries => {
+
+    if(entries[0].isIntersecting){
+
+        animateCounters();
+
+    }
+
+});
+
+observer.observe(statsSection);
+
+const fadeElements = document.querySelectorAll(".fade-up");
+
+const fadeObserver = new IntersectionObserver(
+
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:0.15
+    }
+
+);
+
+fadeElements.forEach(element => {
+
+    fadeObserver.observe(element);
+
+});
+
+
+const fadeCards = document.querySelectorAll(".fade-card");
+
+const cardObserver = new IntersectionObserver(
+
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:0.15
+    }
+
+);
+
+fadeCards.forEach(card => {
+
+    cardObserver.observe(card);
+
+});
