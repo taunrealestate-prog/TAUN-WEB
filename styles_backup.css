@@ -1790,35 +1790,3 @@ footer{
 
     text-align:center;
 }
-
-/* ===== FIX RESPONSIVE MOVIL - TAUN (anadido 07/07/2026) ===== */
-
-/* 1) Corta el arrastre horizontal en movil (raiz del problema) */
-html, body{
-    max-width:100%;
-    overflow-x:hidden;
-}
-
-/* 2) Deja que las columnas de los grids se encojan y no fuercen ancho extra */
-.quienes-grid > *,
-.cards > *,
-.enfoque-grid > *,
-.projects-grid > *,
-.stats > *,
-.testimonios-grid > *,
-.footer-grid > *{
-    min-width:0;
-}
-
-/* 3) Nada multimedia se sale del ancho de pantalla */
-img, svg, video, iframe{
-    max-width:100%;
-}
-
-/* 4) Los campos del formulario ocupan justo el ancho disponible */
-.contact-form input,
-.contact-form select,
-.contact-form textarea{
-    width:100%;
-    max-width:100%;
-}
