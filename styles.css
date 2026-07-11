@@ -1965,6 +1965,22 @@ footer{
     line-height:1.7;
 }
 
+/* Enlaces del footer (teléfono, correo): misma
+   tipografía y color que el resto de datos, en
+   todos los tamaños de pantalla */
+
+.footer-grid a{
+
+    color:inherit;
+
+    text-decoration:none;
+}
+
+.footer-grid a:hover{
+
+    color:var(--gold);
+}
+
 .footer-bottom{
 
     border-top:1px solid rgba(255,255,255,.08);
@@ -2240,6 +2256,15 @@ footer{
     gap:12px;
 
     margin-top:25px;
+}
+
+/* Mientras no carguen las reseñas de Google, el
+   resumen permanece oculto de verdad: el display:flex
+   de arriba anulaba el atributo hidden */
+
+.google-summary[hidden]{
+
+    display:none !important;
 }
 
 .g-badge{
