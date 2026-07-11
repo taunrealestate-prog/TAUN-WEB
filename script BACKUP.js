@@ -1,3 +1,7 @@
+/* ========================= */
+/* MODAL DE CONTACTO */
+/* ========================= */
+
 const openBtn = document.getElementById("openContact");
 const modal = document.getElementById("contactModal");
 const closeBtn = document.getElementById("closeModal");
@@ -23,6 +27,10 @@ modal.addEventListener("click", (e) => {
     }
 
 });
+
+/* ========================= */
+/* MODAL DE PROYECTOS */
+/* ========================= */
 
 const projectLinks =
 document.querySelectorAll(".open-project");
@@ -99,9 +107,13 @@ document
 
     projectModal.classList.remove("active");
 
-    contactModal.classList.add("active");
+    modal.classList.add("active");
 
 });
+
+/* ========================= */
+/* HEADER AL HACER SCROLL */
+/* ========================= */
 
 window.addEventListener("scroll", () => {
 
@@ -117,6 +129,10 @@ window.addEventListener("scroll", () => {
     }
 
 });
+
+/* ========================= */
+/* MENÚ HAMBURGUESA */
+/* ========================= */
 
 const hamburger =
 document.getElementById("menu-toggle");
@@ -142,16 +158,34 @@ hamburger.addEventListener("click", () => {
 
 });
 
+/* Cierra el menú al pulsar un enlace (móvil) */
+
+nav.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        nav.classList.remove("active");
+
+        hamburger.innerHTML =
+        '<i class="fa-solid fa-bars"></i>';
+
+    });
+
+});
+
+/* ========================= */
+/* TARJETAS FLIP (MÓVIL) */
+/* ========================= */
 
 document
-.querySelectorAll(".flip-card")
+.querySelectorAll(".card")
 .forEach(card => {
 
     card.addEventListener("click", () => {
 
         if(window.innerWidth <= 768){
 
-            card.classList.toggle("flipped");
+            card.classList.toggle("active");
 
         }
 
@@ -159,24 +193,19 @@ document
 
 });
 
-document.querySelectorAll(".collapsible h3").forEach((header) => {
-    header.addEventListener("click", () => {
-        const card = header.parentElement;
-        card.classList.toggle("active");
+/* ========================= */
+/* ENFOQUE DESPLEGABLE */
+/* ========================= */
+
+document.querySelectorAll(".enfoque-item").forEach((item) => {
+    item.addEventListener("click", () => {
+        item.classList.toggle("active");
     });
 });
 
-document.querySelectorAll(".card").forEach(card => {
-
-    card.addEventListener("click", () => {
-
-        card.classList.toggle("active");
-
-    });
-
-});
-
-
+/* ========================= */
+/* ANIMACIONES DE SCROLL */
+/* ========================= */
 
 const fadeElements = document.querySelectorAll(".fade-up");
 
@@ -238,6 +267,10 @@ fadeCards.forEach(card => {
     cardObserver.observe(card);
 
 });
+
+/* ========================= */
+/* CONTADORES ESTADÍSTICAS */
+/* ========================= */
 
 const counters = [
 

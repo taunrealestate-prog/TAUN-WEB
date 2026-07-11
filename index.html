@@ -731,7 +731,7 @@
 /* TESTIMONIOS */
 /* ========================= */-->
 
-<section class="testimonios">
+<section class="testimonios" id="resenas">
 
     <div class="section-header">
 
@@ -743,9 +743,36 @@
             Lo que dicen nuestros clientes
         </h2>
 
+        <!-- Resumen de Google: nota media, estrellas y total.
+             Aparece automáticamente al cargar las reseñas -->
+
+        <div class="google-summary" id="googleSummary" hidden>
+
+            <span class="g-badge">
+                <i class="fa-brands fa-google"></i>
+            </span>
+
+            <span class="g-rating" id="gRating"></span>
+
+            <span class="g-stars" id="gStars"></span>
+
+            <span class="g-count" id="gCount"></span>
+
+            <a id="gLink" href="#" target="_blank" rel="noopener">
+                Ver todas las reseñas en Google →
+            </a>
+
+        </div>
+
     </div>
 
-    <div class="testimonios-grid">
+    <!-- Estas dos reseñas se muestran por defecto.
+         En cuanto configures la clave y el Place ID en
+         script.js, se SUSTITUYEN automáticamente por las
+         reseñas reales de tu perfil de Google, con este
+         mismo formato -->
+
+    <div class="testimonios-grid" id="reviewsGrid">
 
         <div class="testimonio">
 
@@ -757,13 +784,21 @@
                 Gran profesionalidad y cercanía durante todo el proyecto.
             </p>
 
-            <h4>
-                Pedro Segovia
-            </h4>
+            <div class="testimonio-autor">
 
-            <span>
-                Inversor inmobiliario
-            </span>
+                <div>
+
+                    <h4>
+                        Pedro Segovia
+                    </h4>
+
+                    <span>
+                        Inversor inmobiliario
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -777,13 +812,21 @@
                 Transformaron un local en una vivienda rentable.
             </p>
 
-            <h4>
-                Jorge López
-            </h4>
+            <div class="testimonio-autor">
 
-            <span>
-                Propietario
-            </span>
+                <div>
+
+                    <h4>
+                        Jorge López
+                    </h4>
+
+                    <span>
+                        Propietario
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 

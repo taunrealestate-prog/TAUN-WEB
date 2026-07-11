@@ -14,10 +14,20 @@
     box-sizing:border-box;
 }
 
+html,
+body{
+    overflow-x:clip;
+    max-width:100%;
+}
+
 body{
     font-family:'Inter', sans-serif;
     background:#111;
     color:white;
+}
+
+img{
+    max-width:100%;
 }
 
 h1,
@@ -281,18 +291,23 @@ button{
 
 /* ========================= */
 /* TARJETAS 3D */
-
+/* La tarjeta crece según la cara más alta:
+   el texto de la cara trasera nunca se sale */
 
 .card{
 
     perspective:1000px;
 
     min-height:260px;
+
+    padding:0;
 }
 
 .card-inner{
 
     position:relative;
+
+    display:grid;
 
     width:100%;
 
@@ -303,7 +318,19 @@ button{
     transform-style:preserve-3d;
 }
 
-.card:hover .card-inner{
+/* El giro por hover solo en dispositivos con ratón.
+   En táctil el hover se queda "pegado" y la tarjeta
+   no puede volver a su posición */
+
+@media (hover:hover){
+
+    .card:hover .card-inner{
+
+        transform:rotateY(180deg);
+    }
+}
+
+.card.active .card-inner{
 
     transform:rotateY(180deg);
 }
@@ -311,17 +338,19 @@ button{
 .card-front,
 .card-back{
 
-    position:absolute;
+    grid-area:1 / 1;
 
     width:100%;
 
-    height:100%;
+    min-height:260px;
 
     backface-visibility:hidden;
 
+    -webkit-backface-visibility:hidden;
+
     border-radius:12px;
 
-    padding:35px;
+    padding:35px 28px;
 
     display:flex;
 
@@ -353,6 +382,8 @@ button{
     padding:0;
 
     margin-top:15px;
+
+    width:100%;
 }
 
 .card-back li{
@@ -360,6 +391,60 @@ button{
     margin-bottom:10px;
 
     color:#ddd;
+
+    font-size:.95rem;
+
+    line-height:1.5;
+}
+
+.card-back h3{
+
+    margin-bottom:10px;
+}
+
+/* Indicador de tarjeta giratoria */
+
+.flip-hint{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-top:22px;
+
+    font-size:.8rem;
+
+    letter-spacing:1px;
+
+    color:var(--gold);
+
+    opacity:.75;
+}
+
+.flip-hint i{
+
+    font-size:.85rem;
+
+    color:var(--gold);
+
+    margin:0;
+
+    display:inline;
+}
+
+/* En escritorio la tarjeta gira sola con el ratón:
+   el aviso no hace falta */
+
+@media (hover:hover){
+
+    .flip-hint{
+
+        display:none;
+    }
 }
 
 
@@ -1145,7 +1230,28 @@ section{
 
     .hero{
 
-        min-height:90vh;
+        min-height:100svh;
+
+        /* En móvil el degradado es vertical:
+           la foto se ve completa y el texto sigue siendo legible */
+        background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.75) 0%,
+            rgba(0,0,0,.35) 45%,
+            rgba(0,0,0,.65) 100%
+        ),
+        url("assets/hero.png");
+
+        background-size:cover;
+
+        /* Ajusta este valor si quieres mostrar otra
+           zona de la foto: left / center / right */
+        background-position:center center;
+
+        align-items:flex-end;
+
+        padding-bottom:70px;
     }
 
     .hero h1{
@@ -1162,6 +1268,26 @@ section{
 
     .quienes-grid{
         grid-template-columns:1fr !important;
+
+        gap:40px;
+    }
+
+    .quienes-imagen{
+
+        width:100%;
+    }
+
+    .quienes-imagen img{
+
+        width:100%;
+
+        height:auto;
+
+        min-height:280px;
+
+        object-fit:cover;
+
+        border-radius:16px;
     }
 
    .cards{
@@ -1202,13 +1328,70 @@ section{
         right:20px;
     }
 
+    footer{
+
+        padding:60px 25px 25px;
+    }
+
     .footer-grid{
 
         grid-template-columns:1fr;
 
         text-align:center;
 
-        gap:40px;
+        gap:45px;
+
+        margin-bottom:35px;
+    }
+
+    .footer-logo{
+
+        height:80px;
+
+        display:block;
+
+        margin:0 auto 15px;
+    }
+
+    .footer-brand p{
+
+        max-width:320px;
+
+        margin:0 auto 10px;
+    }
+
+    .footer-grid h4{
+
+        margin-bottom:15px;
+    }
+
+    .footer-col p{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        gap:10px;
+
+        flex-wrap:wrap;
+
+        word-break:break-word;
+    }
+
+    .footer-col p i{
+
+        color:var(--gold);
+
+        font-size:.9rem;
+    }
+
+    .footer-bottom{
+
+        padding-top:25px;
+
+        font-size:.85rem;
     }
 
 
@@ -1262,9 +1445,12 @@ section{
         gap:20px;
     }
 
+    /* Al girar, la tarjeta se adapta a la altura
+       del contenido: el texto ya no se sale */
+
     .card{
-        min-height:auto;
-        padding:30px;
+        min-height:300px;
+        padding:0;
     }
 
     .card.active .card-inner{
@@ -1272,20 +1458,19 @@ section{
         transform:rotateY(180deg);
     }
 
-    .card{
-
-        min-height:380px;
-    }
-
-    .card-inner{
-
-        height:380px;
-    }
-
     .card-front,
     .card-back{
 
-        height:380px;
+        min-height:300px;
+
+        padding:30px 22px;
+    }
+
+    .card-back li{
+
+        font-size:.9rem;
+
+        margin-bottom:8px;
     }
 
     /* ENFOQUE */
@@ -1389,20 +1574,6 @@ section{
     .enfoque-item.active .details{
 
         display:block;
-
-        max-height:500px;
-
-        opacity:1;
-    }
-
-    .enfoque-item:hover .details{
-
-        opacity:0;
-
-        max-height:0;
-    }
-
-    .enfoque-item.active .details{
 
         opacity:1;
 
@@ -1517,13 +1688,50 @@ header.scrolled{
     transition:.4s ease;
 }
 
-.enfoque-item:hover .details{
+@media (hover:hover){
+
+    .enfoque-item:hover .details{
+
+        opacity:1;
+
+        max-height:250px;
+
+        margin-top:20px;
+    }
+
+    .enfoque-item:hover .enfoque-chevron{
+
+        transform:rotate(180deg);
+    }
+}
+
+.enfoque-item.active .details{
 
     opacity:1;
 
-    max-height:250px;
+    max-height:500px;
 
     margin-top:20px;
+}
+
+/* Chevron indicador de desplegable */
+
+.enfoque-chevron{
+
+    display:block;
+
+    color:var(--gold);
+
+    font-size:1rem;
+
+    margin:18px auto 0;
+
+    transition:transform .35s ease;
+}
+
+.enfoque-item.active .enfoque-chevron{
+
+    transform:rotate(180deg);
 }
 
 
@@ -1790,35 +1998,225 @@ footer{
 
     text-align:center;
 }
+/* ============================================= */
+/* CORRECCIONES MÓVIL V2                         */
+/* Este bloque va al FINAL del fichero a propósito:
+   así ninguna regla de escritorio definida más
+   arriba puede machacar los estilos de móvil     */
+/* ============================================= */
 
-/* ===== FIX RESPONSIVE MOVIL - TAUN (anadido 07/07/2026) ===== */
+@media (max-width:768px){
 
-/* 1) Corta el arrastre horizontal en movil (raiz del problema) */
-html, body{
-    max-width:100%;
-    overflow-x:hidden;
-}
+    /* ----- PADDING DE SECCIONES ----- */
+    /* Los paddings de escritorio (.quienes, .servicios...)
+       usan selectores de clase y ganaban a la regla móvil
+       de elemento: estrujaban el contenido a 190px */
 
-/* 2) Deja que las columnas de los grids se encojan y no fuercen ancho extra */
-.quienes-grid > *,
-.cards > *,
-.enfoque-grid > *,
-.projects-grid > *,
-.stats > *,
-.testimonios-grid > *,
-.footer-grid > *{
-    min-width:0;
-}
+    section{
 
-/* 3) Nada multimedia se sale del ancho de pantalla */
-img, svg, video, iframe{
-    max-width:100%;
-}
+        padding:80px 25px !important;
+    }
 
-/* 4) Los campos del formulario ocupan justo el ancho disponible */
-.contact-form input,
-.contact-form select,
-.contact-form textarea{
-    width:100%;
-    max-width:100%;
+    /* ----- HERO: la foto se ve ENTERA ----- */
+    /* La foto se pinta completa (ancho total, sin
+       recortes) bajo el header, con un degradado
+       que la funde con el fondo. El texto queda
+       debajo, nunca encima de la foto */
+
+    .hero{
+
+        position:relative;
+
+        min-height:100svh;
+
+        background:#111 !important;
+
+        align-items:flex-end;
+
+        padding:0 25px 80px !important;
+    }
+
+    .hero::before{
+
+        content:"";
+
+        position:absolute;
+
+        top:90px;
+
+        left:0;
+
+        width:100%;
+
+        aspect-ratio:16 / 9;
+
+        background:url("assets/hero.png") center / cover no-repeat;
+    }
+
+    .hero::after{
+
+        content:"";
+
+        position:absolute;
+
+        top:90px;
+
+        left:0;
+
+        width:100%;
+
+        aspect-ratio:16 / 9;
+
+        background:linear-gradient(
+            180deg,
+            rgba(17,17,17,0) 55%,
+            rgba(17,17,17,.55) 80%,
+            #111 100%
+        );
+    }
+
+    .hero-content{
+
+        position:relative;
+
+        z-index:2;
+
+        margin-left:0;
+
+        max-width:100%;
+
+        /* Garantiza que el texto empiece siempre
+           por debajo de la foto */
+        padding-top:calc(110px + 56.25vw);
+    }
+
+    .hero h1{
+
+        font-size:2.9rem;
+    }
+
+    /* ----- QUIÉNES SOMOS ----- */
+    /* Foto arriba (como protagonista, igual que en
+       PC está a la derecha) y texto alineado a la
+       izquierda: el justificado en columnas
+       estrechas crea huecos feos entre palabras */
+
+    .quienes-grid{
+
+        display:flex !important;
+
+        flex-direction:column;
+
+        align-items:stretch !important;
+
+        gap:35px;
+    }
+
+    .quienes-imagen{
+
+        order:-1;
+
+        width:100%;
+    }
+
+    .quienes-imagen img{
+
+        width:100%;
+
+        height:auto;
+
+        min-height:260px;
+
+        object-fit:cover;
+
+        border-radius:16px;
+    }
+
+    .quienes-texto p,
+    .quienes p{
+
+        text-align:left !important;
+    }
+
+    /* ----- PIE DE PÁGINA ----- */
+    /* !important porque la regla de escritorio
+       (3 columnas) está definida después del
+       bloque móvil original y lo machacaba */
+
+    footer{
+
+        padding:60px 25px 25px !important;
+    }
+
+    .footer-grid{
+
+        display:grid !important;
+
+        grid-template-columns:1fr !important;
+
+        gap:45px !important;
+
+        text-align:center !important;
+
+        margin-bottom:35px !important;
+    }
+
+    .footer-logo{
+
+        height:80px !important;
+
+        display:block;
+
+        margin:0 auto 15px;
+    }
+
+    .footer-brand p{
+
+        max-width:320px;
+
+        margin:0 auto 10px;
+    }
+
+    .footer-col p{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        gap:10px;
+
+        flex-wrap:wrap;
+    }
+
+    .footer-col p i{
+
+        color:var(--gold);
+
+        font-size:.9rem;
+    }
+
+    /* Teléfono y correo: mismo estilo que el resto
+       del footer (iOS los pintaba en azul) */
+
+    .footer-col a{
+
+        color:#bbb;
+
+        text-decoration:none;
+    }
+
+    .footer-col a:active{
+
+        color:var(--gold);
+    }
+
+    .footer-bottom{
+
+        padding-top:25px;
+
+        font-size:.85rem;
+    }
+
 }
