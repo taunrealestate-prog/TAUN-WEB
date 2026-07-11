@@ -1,7 +1,3 @@
-/* ========================= */
-/* MODAL DE CONTACTO */
-/* ========================= */
-
 const openBtn = document.getElementById("openContact");
 const modal = document.getElementById("contactModal");
 const closeBtn = document.getElementById("closeModal");
@@ -27,10 +23,6 @@ modal.addEventListener("click", (e) => {
     }
 
 });
-
-/* ========================= */
-/* MODAL DE PROYECTOS */
-/* ========================= */
 
 const projectLinks =
 document.querySelectorAll(".open-project");
@@ -107,13 +99,9 @@ document
 
     projectModal.classList.remove("active");
 
-    modal.classList.add("active");
+    contactModal.classList.add("active");
 
 });
-
-/* ========================= */
-/* HEADER AL HACER SCROLL */
-/* ========================= */
 
 window.addEventListener("scroll", () => {
 
@@ -129,10 +117,6 @@ window.addEventListener("scroll", () => {
     }
 
 });
-
-/* ========================= */
-/* MENÚ HAMBURGUESA */
-/* ========================= */
 
 const hamburger =
 document.getElementById("menu-toggle");
@@ -158,34 +142,16 @@ hamburger.addEventListener("click", () => {
 
 });
 
-/* Cierra el menú al pulsar un enlace (móvil) */
-
-nav.querySelectorAll("a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        nav.classList.remove("active");
-
-        hamburger.innerHTML =
-        '<i class="fa-solid fa-bars"></i>';
-
-    });
-
-});
-
-/* ========================= */
-/* TARJETAS FLIP (MÓVIL) */
-/* ========================= */
 
 document
-.querySelectorAll(".card")
+.querySelectorAll(".flip-card")
 .forEach(card => {
 
     card.addEventListener("click", () => {
 
         if(window.innerWidth <= 768){
 
-            card.classList.toggle("active");
+            card.classList.toggle("flipped");
 
         }
 
@@ -193,19 +159,24 @@ document
 
 });
 
-/* ========================= */
-/* ENFOQUE DESPLEGABLE */
-/* ========================= */
-
-document.querySelectorAll(".enfoque-item").forEach((item) => {
-    item.addEventListener("click", () => {
-        item.classList.toggle("active");
+document.querySelectorAll(".collapsible h3").forEach((header) => {
+    header.addEventListener("click", () => {
+        const card = header.parentElement;
+        card.classList.toggle("active");
     });
 });
 
-/* ========================= */
-/* ANIMACIONES DE SCROLL */
-/* ========================= */
+document.querySelectorAll(".card").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        card.classList.toggle("active");
+
+    });
+
+});
+
+
 
 const fadeElements = document.querySelectorAll(".fade-up");
 
@@ -267,10 +238,6 @@ fadeCards.forEach(card => {
     cardObserver.observe(card);
 
 });
-
-/* ========================= */
-/* CONTADORES ESTADÍSTICAS */
-/* ========================= */
 
 const counters = [
 
