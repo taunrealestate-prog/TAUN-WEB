@@ -1965,6 +1965,22 @@ footer{
     line-height:1.7;
 }
 
+/* Enlaces del footer (teléfono, correo): misma
+   tipografía y color que el resto de datos, en
+   todos los tamaños de pantalla */
+
+.footer-grid a{
+
+    color:inherit;
+
+    text-decoration:none;
+}
+
+.footer-grid a:hover{
+
+    color:var(--gold);
+}
+
 .footer-bottom{
 
     border-top:1px solid rgba(255,255,255,.08);
@@ -2219,4 +2235,198 @@ footer{
         font-size:.85rem;
     }
 
+}
+
+/* ============================================= */
+/* RESEÑAS DE GOOGLE                             */
+/* Mismo formato de tarjetas de la web; solo se  */
+/* añade el resumen y el bloque de autor         */
+/* ============================================= */
+
+/* Resumen bajo el título: nota, estrellas, total */
+
+.google-summary{
+
+    display:flex;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:25px;
+}
+
+/* Mientras no carguen las reseñas de Google, el
+   resumen permanece oculto de verdad: el display:flex
+   de arriba anulaba el atributo hidden */
+
+.google-summary[hidden]{
+
+    display:none !important;
+}
+
+.g-badge{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    background:white;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.g-badge i{
+
+    font-size:1.1rem;
+
+    background:linear-gradient(
+        45deg,
+        #4285F4,
+        #EA4335,
+        #FBBC05,
+        #34A853
+    );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+}
+
+.g-rating{
+
+    font-size:1.5rem;
+
+    font-weight:600;
+
+    color:#222;
+}
+
+.g-stars{
+
+    color:var(--gold);
+
+    font-size:1.2rem;
+
+    letter-spacing:2px;
+}
+
+.g-count{
+
+    color:#666;
+
+    font-size:.95rem;
+}
+
+.google-summary a{
+
+    color:var(--gold);
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    font-size:.95rem;
+}
+
+.google-summary a:hover{
+
+    text-decoration:underline;
+}
+
+/* Tarjetas: mismo estilo .testimonio de siempre.
+   La cuadrícula alinea cada tarjeta arriba para que
+   reseñas de distinta longitud no se estiren feas */
+
+.testimonios-grid{
+
+    align-items:start;
+}
+
+.testimonio{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.testimonio p{
+
+    overflow-wrap:anywhere;
+}
+
+/* Autor: foto + nombre + antigüedad */
+
+.testimonio-autor{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-top:auto;
+
+    padding-top:20px;
+
+    border-top:1px solid rgba(0,0,0,.07);
+}
+
+.testimonio-autor h4{
+
+    margin-bottom:3px;
+}
+
+.autor-foto{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+}
+
+.autor-inicial{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--gold);
+
+    color:#111;
+
+    font-weight:600;
+
+    font-size:1.2rem;
+}
+
+/* Móvil: resumen centrado */
+
+@media (max-width:768px){
+
+    .google-summary{
+
+        justify-content:center;
+
+        text-align:center;
+    }
 }

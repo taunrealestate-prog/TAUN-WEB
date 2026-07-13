@@ -54,7 +54,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=5">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -835,54 +835,21 @@
 </section>
 
 <!-- /* ========================= */
-/* CTA */
+/* CONTACTO — CTA + FORMULARIO UNIDOS */
 /* ========================= */-->
 
-<section class="cta fade-up">
-
-    <h2>
-        ¿Tienes un proyecto inmobiliario?
-    </h2>
-
-    <p>
-        Estudiamos cada caso de forma personalizada.
-    </p>
-
-    <button class="btn-gold" id="openContact">
-        Solicitar asesoramiento
-    </button>
-
-
-</section>
-
-
-<!-- /* ========================= */
-/* CONTACTO */
-/* ========================= */-->
-
-<!-- <section id="contacto" class="contacto">
-
-    <h2>Contacto</h2>
-
-    <p>Madrid, España</p>
-
-    <p>taunrealestate@gmail.com</p>
-
-    <p>+34 669 034 297</p>
-
-</section> /-->
-
-<!-- /* ========================= */
-/* FORMULARIO DE CONTACTO */
-/* ========================= */-->
-
-<section class="contact-form-section" id="contacto">
+<section class="contact-form-section fade-up" id="contacto">
 
     <div class="section-header">
 
         <span class="section-tag">CONTACTO</span>
 
-        <h2>Solicita asesoramiento</h2>
+        <h2>¿Tienes un proyecto inmobiliario?</h2>
+
+        <p class="contact-subtitle">
+            Estudiamos cada caso de forma personalizada.
+            Cuéntanoslo y te contactamos.
+        </p>
 
     </div>
 
@@ -890,7 +857,20 @@
         action="https://formsubmit.co/taunrealestate@gmail.com"
         method="POST"
         class="contact-form"
+        id="contactForm"
     >
+
+        <!-- Configuración del envío (campos ocultos):
+             asunto del correo, formato tabla, sin captcha
+             y honeypot antispam -->
+
+        <input type="hidden" name="_subject" value="Nueva solicitud de asesoramiento — taunrealestate.com">
+
+        <input type="hidden" name="_template" value="table">
+
+        <input type="hidden" name="_captcha" value="false">
+
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
         <input
             type="text"
@@ -935,11 +915,15 @@
             required
         ></textarea>
 
-        <button type="submit" class="btn-gold">
+        <button type="submit" class="btn-gold" id="contactSubmit">
 
             Solicitar asesoramiento
 
         </button>
+
+        <!-- Mensaje de confirmación o error tras enviar -->
+
+        <p class="form-status" id="formStatus" hidden></p>
 
     </form>
 
@@ -1029,7 +1013,7 @@
         </a>
 
         <a
-        href="mailto:info@taunrealestate.com"
+        href="mailto:taunrealestate@gmail.com"
         class="contact-option">
 
             <i class="fa-solid fa-envelope"></i>
@@ -1110,7 +1094,7 @@
 
 
 
-<script src="script.js?v=3"></script>
+<script src="script.js?v=5"></script>
 
 </body>
 </html>

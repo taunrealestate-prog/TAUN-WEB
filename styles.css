@@ -1759,9 +1759,18 @@ header.scrolled{
 
 .contact-form-section{
 
-    background:#f7f7f7;
+    /* Sección oscura: recupera la alternancia
+       claro/oscuro tras las reseñas (claras) */
 
-    color:#222;
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(179,132,64,.09),
+            transparent 55%
+        ),
+        #111;
+
+    color:white;
 
     padding:120px 8%;
 }
@@ -1785,13 +1794,48 @@ header.scrolled{
 
     padding:18px;
 
-    border:1px solid #ddd;
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.14);
 
     border-radius:12px;
 
     font-size:1rem;
 
     font-family:inherit;
+
+    color:white;
+
+    transition:border-color .25s ease, background .25s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+
+    color:#999;
+}
+
+.contact-form select{
+
+    color:#999;
+}
+
+.contact-form select option{
+
+    color:#222;
+
+    background:white;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+
+    outline:none;
+
+    border-color:var(--gold);
+
+    background:rgba(255,255,255,.08);
 }
 
 .contact-form textarea{
@@ -2429,4 +2473,52 @@ footer{
 
         text-align:center;
     }
+}
+
+/* ============================================= */
+/* CONTACTO UNIFICADO — subtítulo y estado       */
+/* ============================================= */
+
+.contact-subtitle{
+
+    color:#aaa;
+
+    font-size:1.05rem;
+
+    margin:15px auto 0;
+
+    max-width:520px;
+}
+
+.form-status{
+
+    margin-top:20px;
+
+    padding:15px 20px;
+
+    border-radius:10px;
+
+    font-size:.95rem;
+
+    line-height:1.6;
+
+    text-align:center;
+}
+
+.form-status.ok{
+
+    background:rgba(179,132,64,.15);
+
+    border:1px solid var(--gold);
+
+    color:#e8c98f;
+}
+
+.form-status.error{
+
+    background:rgba(220,80,80,.12);
+
+    border:1px solid rgba(220,80,80,.45);
+
+    color:#ff9d9d;
 }

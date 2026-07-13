@@ -22,11 +22,17 @@ const openBtn = document.getElementById("openContact");
 const modal = document.getElementById("contactModal");
 const closeBtn = document.getElementById("closeModal");
 
-openBtn.addEventListener("click", () => {
+/* El botón CTA se fusionó con el formulario de contacto;
+   el modal sigue abriéndose desde los proyectos */
 
-    modal.classList.add("active");
+if(openBtn){
 
-});
+    openBtn.addEventListener("click", () => {
+
+        modal.classList.add("active");
+
+    });
+}
 
 closeBtn.addEventListener("click", () => {
 
@@ -586,3 +592,80 @@ async function initGoogleReviews(){
 }
 
 initGoogleReviews();
+
+/* ============================================= */
+/* FORMULARIO DE CONTACTO — ENVÍO DIRECTO        */
+/* El visitante no sale de la página: la         */
+/* solicitud llega por correo y aquí se muestra  */
+/* la confirmación                                */
+/* ============================================= */
+
+const contactForm = document.getElementById("contactForm");
+const contactSubmit = document.getElementById("contactSubmit");
+const formStatus = document.getElementById("formStatus");
+
+if(contactForm){
+
+    contactForm.addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        /* Honeypot: si un bot lo rellenó, se ignora */
+
+        if(contactForm._honey && contactForm._honey.value) return;
+
+        contactSubmit.disabled = true;
+
+        contactSubmit.textContent = "Enviando...";
+
+        formStatus.hidden = true;
+
+        const datos = new FormData(contactForm);
+
+        try{
+
+            const respuesta = await fetch(
+                "https://formsubmit.co/ajax/taunrealestate@gmail.com",
+                {
+                    method: "POST",
+                    headers: { "Accept": "application/json" },
+                    body: datos
+                }
+            );
+
+            const cuerpo = await respuesta.json();
+
+            if(respuesta.ok && cuerpo.success !== "false"){
+
+                contactForm.reset();
+
+                formStatus.textContent =
+                    "✓ Solicitud enviada correctamente. " +
+                    "Te contactaremos muy pronto.";
+
+                formStatus.className = "form-status ok";
+
+            }else{
+
+                throw new Error(cuerpo.message || "Error de envío");
+            }
+
+        }catch(err){
+
+            console.warn("Error al enviar el formulario:", err);
+
+            formStatus.textContent =
+                "No se pudo enviar la solicitud. Inténtalo de nuevo " +
+                "o escríbenos directamente a taunrealestate@gmail.com " +
+                "o por WhatsApp.";
+
+            formStatus.className = "form-status error";
+        }
+
+        formStatus.hidden = false;
+
+        contactSubmit.disabled = false;
+
+        contactSubmit.textContent = "Solicitar asesoramiento";
+    });
+}
